@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock %}
+{% block content %}
+
+    <!-- header section start -->
+    <div class="header_section">
+        <!-- banner section start -->
+        <div class="container-fluid">
+            <div class="banner_section layout_padding">
+                <h1 class="banner_taital">welcome <br>our blog</h1>
+                <div id="my_slider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <div class="image_main">
+                                <div class="container">
+                                    <img style="height: 500px" src="{% static "images/img3.png" %}" class="image_1">
+                                    <div class="contact_bt"><a href="{% url 'blog-page' %}">Blog Page</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <div class="image_main">
+                                <div class="container">
+                                    <img style="height: 500px" src="{% static "images/img1.png" %}" class="image_1">
+                                    <div class="contact_bt"><a href="{% url 'contact-page' %}">Contact Us</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="image_main">
+                                <div class="container">
+                                    <img style="height: 500px" src="{% static "images/img2.png" %}" class="image_1">
+                                    <div class="contact_bt"><a href="{% url 'login' %}">Registration</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- banner section end -->
+    </div>
+
+    <div class="about_section layout_padding">
+        {% for blog in blog_list %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="about_img"><img src="/media/{{ blog.image }}" alt="image"></div>
+                        <div class="like_icon"><img src="{% static "images/like-icon.png" %}" alt="image"></div>
+                        <p class="post_text">Post By : {{ blog.created_at }}</p>
+                        <h2 class="most_text">{{ blog.title }}</h2>
+                        <p class="lorem_text">{{ blog.body }}</p>
+                        <div class="social_icon_main">
+                            <div class="social_icon">
+                                <ul>
+                                    <li><a href="#"><img src="{% static "images/fb-icon.png" %}"></a></li>
+                                    <li><a href="#"><img src="{% static "images/twitter-icon.png" %}"></a></li>
+                                    <li><a href="#"><img src="{% static "images/instagram-icon.png" %}"></a></li>
+                                </ul>
+                            </div>
+                            <div class="read_bt"><a href="{% url 'blog-detail' blog.pk %}">Read More</a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="about_main">
+                            <h1 class="follow_text">CONNECT & FOLLOW</h1>
+                            <div class="follow_icon">
+                                <ul>
+                                    <li><a href="#"><img src="{% static "images/fb-icon-1.png" %}"></a></li>
+                                    <li><a href="#"><img src="{% static "images/twitter-icon-1.png" %}"></a></li>
+                                    <li><a href="#"><img src="{% static "images/linkedin-icon-1.png" %}"></a></li>
+                                    <li><a href="#"><img src="{% static "images/instagram-icon-1.png" %}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <!-- blog section end -->
+    <!-- tag section start -->
+    <div class="tag_section layout_padding">
+        <div class="container">
+            <h1 class="tag_taital">Tag</h1>
+            <div class="tag_bt">
+                <ul>
+                    <li class="active"><a href="#">Ectetur</a></li>
+                    <li><a href="#">Onsectetur</a></li>
+                    <li><a href="#">Consectetur</a></li>
+                    <li><a href="#">Consectetur</a></li>
+                    <li><a href="#">Consectetur</a></li>
+                </ul>
+            </div>
+            <div class="tag_bt_2">
+                <ul>
+                    <li><a href="#">Tetur</a></li>
+                    <li><a href="#">Conse</a></li>
+                    <li><a href="#">Nsectetur</a></li>
+                    <li><a href="#">Sectetur</a></li>
+                    <li><a href="#">Consectetur</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- tag section end -->
+    <!-- contact section start -->
+    <div class="contact_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"
+                                style="text-indent: 0; border: none; color: #000; font-size: 18px; text-align: center;">
+                                1
+                            </li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"
+                                style="text-indent: 0; border: none; color: #000; font-size: 18px; text-align: center;">
+                                2
+                            </li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"
+                                style="text-indent: 0; border: none; color: #000; font-size: 18px; text-align: center;">
+                                3
+                            </li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"
+                                style="text-indent: 0; border: none; color: #000; font-size: 18px; text-align: center;">
+                                4
+                            </li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="contact_img"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="contact_img"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="contact_img"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="contact_img"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mail_section">
+                        <h1 class="contact_taital">Contact us</h1>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="text" class="email_text" placeholder="Name" required="required" name="name">
+                            <input type="text" class="email_text" placeholder="Phone" required="required" name="phone">
+                            <input type="email" class="email_text" placeholder="Email" name="email">
+                            <textarea class="massage_text" placeholder="Message" required="required" rows="5"
+                                      id="comment"
+                                      name="message"></textarea>
+                            <button class="send_bt" type="submit">
+                                <a>send</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact section end -->
+
+{% endblock %}

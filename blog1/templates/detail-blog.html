@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Recent {% endblock %}
+{% block content %}
+    <!-- recent section start -->
+    <!-- blog section start -->
+    <div class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12">
+                    <div class="about_img"><img src="/media/{{ blog.image }}" alt="image"></div>
+                    <div class="like_icon"><img src="{% static "images/like-icon.png" %}" alt="image"></div>
+                    <p class="post_text">Post By : {{ blog.created_at }}</p>
+                    <h2 class="most_text">{{ blog.title }}</h2>
+                    <p class="lorem_text">{{ blog.body }}</p>
+                    <div class="social_icon_main">
+                        <div class="social_icon">
+                            <ul>
+                                <li><a href="#"><img src="{% static "images/fb-icon.png" %}"></a></li>
+                                <li><a href="#"><img src="{% static "images/twitter-icon.png" %}"></a></li>
+                                <li><a href="#"><img src="{% static "images/instagram-icon.png" %}"></a></li>
+                            </ul>
+                            <ul class="read_bt">
+                                <li>
+                                    <a href="{% url 'update-page' blog.id %}">Update</a> |
+                                    <a href="{% url 'delete-page' blog.id %}">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12">
+                    <form action="" method="post">{% csrf_token %}
+                        <div class="newsletter_main">
+                            <h1 class="newsletter_taital">Send Comment</h1>
+                            <div class="input_box">
+                                <input type="text" class="input_text" placeholder="comment" name="comment">
+                                <button class="send_bt" type="submit">
+                                    <a>send</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    {% for comment in comments %}
+                        <div>
+                            <h1 class="about_taital">{{ comment.author }}</h1>
+                            <p class="about_text">{{ comment.comment }}</p>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- blog section end -->
+    <!-- recent section end -->
+{% endblock %}
